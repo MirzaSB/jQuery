@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="jquery.js"></script>
+<script>
+    $("a").attr("href", "allMyHrefsAreTheSameNow.html");
+
+    //Set title and href using attr.
+    $("a").attr( {
+        title: "all title are the same too!",
+        href: "somethingNew.html"
+    });
+
+    //Returns the href for the first "a" element in the document.
+    $("a").attr("href");
+
+</script>
+<body>
+
+</body>
+</html>

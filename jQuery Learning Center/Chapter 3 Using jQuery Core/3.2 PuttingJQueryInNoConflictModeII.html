@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!--Putting jQuery into no conflict mode. -->
+<script src="prototype.js"></script>
+<script src="jquery.js"></script>
+<script>
+
+    jQuery.noConflict();
+    jQuery(document).ready(function($) {
+        //You can use the locally-scoped $ in here as an alias to jQuery.
+        $("div").hide();
+    });
+
+    //The $ variable in the global scope has the prototype.js meaning.
+    window.onload = function() {
+        var mainDiv = $("main");
+    }
+</script>
+<body>
+
+</body>
+</html>

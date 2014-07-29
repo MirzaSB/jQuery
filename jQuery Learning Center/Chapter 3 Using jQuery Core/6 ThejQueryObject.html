@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="jquery.js"></script>
+<script>
+
+    //The following snippet attempts to set the inner HTML of a <tr> element stored in target:
+    var target = document.getElementById("target");
+    target.innerHTML = "<td>Hello <b>World</b>!</td>";
+
+    // Setting the inner HTML with jQuery.
+    var target = document.getElementById("target");
+    $(target).html("<td>Hello <b>World</b>!</td>");
+
+    // Inserting a new element after another with the native DOM API.
+    var target = document.getElementById("target");
+    var newElement = document.createElement("div");
+    target.parentNode.insertBefore(newelement, target.nextSibling);
+
+    // Inserting a new element after another with jQuery.
+    var target = document.getElementById("target");
+    var newElement = document.createElement("div");
+    $(target).after(newElement);
+
+    //Selecting all <h1> tags.
+    var headings = $("h1");
+
+    //Viewing the number of <h1> tags on the page.
+    var allHeadings = $("h1");
+    alert(allHeadings.length);
+
+    // Selecting only the first <h1> element on the page (in a jQuery object).
+    var headings = $("h1");
+    var firstHeading = headings.eq(0);
+
+    // Selecting only the first <h1> element on the page.
+    var firstHeadingElem = $("h1").get(0);
+
+    // Selecting only the first <h1> element on the page (alternate approach).
+    var firstHeadingElem = $("h1")[0];
+
+    //Creating two jQuery objects for the same element.
+    var logo1 = $("#logo");
+    var logo2 = $("#logo");
+
+    // Comparing jQuery objects.
+    alert( $( "#logo" ) === $( "#logo" ) ); // alerts "false"
+
+    // Comparing DOM elements.
+    var logo1Elem = logo1.get(0);
+    var logo2Elem = logo2.get(0);
+    alert( logo1Elem === logo2Elem ); // alerts "true"
+
+    // Comparing DOM elements (with more readable variable names).
+    var $logo1 = $("#logo");
+    var logo1 = $logo1.get(0);
+
+    var $logo2 = $("#logo");
+    var logo2 = $logo2.get(0);
+    alert( logo1 === logo2 ); // alerts "true"
+
+    // Selecting all <p> elements on the page.
+    var allParagraphs = $( "p" );
+
+    // Updating the selection.
+    allParagraphs = $( "p" );
+
+
+
+
+
+
+
+
+</script>
+<body>
+
+</body>
+</html>

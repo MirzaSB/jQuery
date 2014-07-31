@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="jquery.js"></script>
+<body>
+    <ul>
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+    </ul>
+    <li id="a"></li>
+    <li id="b"></li>
+    <li id="c"></li>
+    <script>
+        var sum = 0;
+        var arr = [ 1, 2, 3, 4, 5 ];
+
+        /*
+         for ( var i = 0, l = arr.length; i < l; i++ ) {
+         sum += arr[ i ];
+         }
+         */
+
+        $.each( arr, function( index, value ){
+            sum += value;
+        });
+
+        console.log( sum );
+        console.log("--------------");
+
+        sum = 0;
+        var obj = {
+            foo: 1,
+            bar: 2
+        }
+
+        /*
+         for (var item in obj) {
+         sum += obj[ item ];
+         }
+         */
+
+        $.each(obj, function(key,value){
+            sum+= value;
+        });
+
+        console.log("Using jQuery, the sum is --> " + sum );
+        console.log("--------------");
+
+        $( "li" ).each( function( index, element ){
+            console.log( $( this ).text() );
+        });
+        console.log("-----------------");
+
+        /*
+        $( "li" ).each( function( index, el ) {
+            $( el ).addClass( "newClass" );
+        });
+        */
+
+        $( "li" ).addClass( "newClass" );
+        console.log("-----------------");
+
+        var arr = [{
+            id: "a",
+            tagName: "li"
+        }, {
+            id: "b",
+            tagName: "li"
+        }, {
+            id: "c",
+            tagName: "li"
+        }];
+
+        //Returns ["a","b","c"]
+        $("li").map(function(index,element) {
+           return element.id;
+        }).get();
+
+        //Also returns ["a","b","c"]
+        //Note that the value comes first with $.map
+        $.map(arr, function(value, index) {
+            return value.id;
+        });
+    </script>
+</body>
+</html>

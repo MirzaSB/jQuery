@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script>
+    //Returns "lots of extra whitespace"
+    $.trim("      lots of extra whitespace     ");
+
+    //$.each iterates over arrays and objects.
+    $.each(["foo", "bar", "baz"], function(idx,val) {
+        console.log("element " + idx + " is " + val);
+    });
+
+    $.each({foo: "bar", baz: "bim"}, function(k,v){
+        console.log(k + ": " + v);
+    });
+
+    //.inArray() returns a value's index in an array or -1 if the value is not in the array.
+    var myArray = [1,2,3,4,5];
+    if($.inArray(4, myArray) !== -1) {
+        console.log("found it");
+    }
+
+    //$.extend() changes the properties of the first object using the properties of subsequent objects.
+    var firstObject = {foo: "bar", a: "b"};
+    var secondObject = {foo: "baz"};
+
+    var newObject = $.extend({}, firstObject, secondObject);
+
+    console.log(firstObject.foo); //"bar"
+    console.log(newObject.foo); //"baz"
+
+    //$.proxy() returns a function that will always run in the provided scope --> sets the meaning
+    // of "this" inside the passed function to the second argument.
+    var myFunction = function() {
+        console.log(this);
+    };
+    var myObject = {
+        foo: "bar"
+    };
+    myFunction(); //window
+
+    var myProxyFunction = $.proxy(myFunction, myObject);
+    myProxyFunction(); //myObject
+
+    var myObject = {
+        myFn: function() {
+            console.log(this);
+        }
+    };
+    $("#foo").click(myObject.myFn); //HTMLElement #foo
+    $("#foo").click($.proxy(myObject, "myFn"));
+
+</script>
+<body>
+
+</body>
+</html>

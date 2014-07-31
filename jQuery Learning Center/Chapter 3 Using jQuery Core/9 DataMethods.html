@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script>
+    // Storing and retrieving data related to an element.
+    $("#myDiv").data("keyName", {foo: "bar"});
+    $("#myDiv").data("keyName"); //Returns {foo: "bar"}
+
+    //Storing a relationship between elements using .data()
+    $("#myList li").each(function() {
+        var li = $(this);
+        var div = li.find("div.content");
+
+        li.data("contentDiv", div);
+    });
+
+    // Later, we don't have to find the div again;
+    // we can just read it from the list item's data
+    var firstLi = $("#myList li:first");
+    firstLi.data("contentDiv").html("new content");
+</script>
+<body>
+
+</body>
+</html>

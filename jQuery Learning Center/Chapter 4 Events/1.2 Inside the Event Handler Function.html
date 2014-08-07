@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <input type="text" value="Test">
+    <a href="http://www.fightersgeneration.com">Fighters Generation</a>
+    <a href="http://www.evil.com">Evil Site</a>
+    <script src="jquery.js"></script>
+    <script>
+        //Event setup using the '.on()' method with data.
+        $("input").on(
+                "change",
+                {foo: "bar"}, //associate data with event binding
+                function(eventObject) {
+                    console.log("An input value has changed! ", eventObject.data.foo);
+                }
+        );
+
+        //Preventing a link from being followed.
+        $("a").click(function(eventObject) {
+            var elem = $ (this);
+            if(elem.attr("href").match(/evil/)) {
+                eventObject.preventDefault();
+                elem.addClass("evil");
+            }
+        });
+
+    </script>
+</body>
+</html>

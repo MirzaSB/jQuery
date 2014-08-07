@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button class= "alert" type="button">Button 1</button>
+    <button type="button">Button 2</button>
+    <script src="jquery.js"></script>
+    <script>
+        $(document).ready(function() {
+            //Sets up click behavior on all button elements with the alert class
+            // that exist in the DOM when the instruction was executed
+            $("button.alert").on("click", function() {
+                console.log("A button with the alert class was clicked!");
+            });
+            //Now create a new button element with the alert class. This button was created after the click listeners
+            //were applied above, so it will not have the same click behavior as its peers.
+            $("button").addClass("alert").appendTo(document.body);
+        });
+    </script>
+</body>
+</html>

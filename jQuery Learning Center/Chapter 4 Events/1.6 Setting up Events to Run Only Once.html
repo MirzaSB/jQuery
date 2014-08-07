@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <p>This is a test paragraph</p>
+    <input id="test" type="text" value="Test">
+
+    <script src="jquery.js"></script>
+
+    <script>
+        //Switching handlers using the '$.fn.one' method
+        $("p").one("click", firstClick);
+
+        function firstClick() {
+            console.log("You just clicked this for the first time!");
+            //Now setup the new handler for subsequent clicks;
+            //omit this step if no further click responses are needed
+            $(this).click(function() {console.log("You have clicked this before!");});
+        }
+
+        //Using .one() to bind several events
+        $("input[id]").one("focus mouseover keydown", firstEvent);
+
+        function firstEvent(eventObject) {
+            console.log("A " + eventObject.type + " event occurred for the first time on the input with id " + this.id);
+        }
+    </script>
+
+</body>
+</html>

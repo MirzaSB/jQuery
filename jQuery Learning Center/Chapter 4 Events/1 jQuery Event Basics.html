@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <p>This is a test</p>
+    <script src="jquery.js"></script>
+    <script>
+        //Event setup using a convenience method.
+        $("p").click(function() {
+            console.log("You clicked a paragraph!");
+        });
+
+        //Equivalent event setup using the '.on()' method.
+        $("p").on("click", function() {
+           console.log("click");
+        });
+    </script>
+</body>
+</html>

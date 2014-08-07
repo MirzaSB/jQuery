@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <ol id="menu">
+        <li>Apples</li>
+        <li>Oranges</li>
+        <li>Mangoes</li>
+    </ol>
+    <script src="jquery.js"></script>
+    <script>
+        // The hover helper function
+        $( "#menu li" ).hover(function() {
+            $( this ).toggleClass( "hover" );
+            //$(this).fadeOut(100);
+        });
+    </script>
+
+</body>
+</html>

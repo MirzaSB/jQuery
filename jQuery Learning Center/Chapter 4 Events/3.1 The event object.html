@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<button id="helloBtn">Say Hello</button>
+<button id="helloBtn2">Say Hello 2</button>
+<button id="helloBtn3">Say Hello 3</button>
+
+<script src="jquery.js"></script>
+<script>
+
+    //Binding a named function
+    function sayHello(event) {
+        alert ("Hello from the sayHello function.");
+    }
+
+    $("#helloBtn").on("click", sayHello());
+
+    //Preventing a default action from occurring and stopping the event bubbling
+    $("#helloBtn2").on("submit", function (event) {
+
+        //Prevent the default submission.
+        event.preventDefault();
+
+        // Log the event object for inspectin'
+        console.log( event );
+
+        //Prevent event from bubbling up DOM tree, prohibiting delegation.
+        event.stopPropagation();
+    });
+
+</script>
+
+</body>
+</html>

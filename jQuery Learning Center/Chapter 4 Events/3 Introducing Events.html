@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <button id="helloBtn">Say Hello</button>
+    <button id="helloBtn2">Say Hello 2</button>
+    <button id="helloBtn3">Say Hello 3</button>
+
+    <script src="jquery.js"></script>
+    <script>
+
+        //Event binding using addEventListener
+        var helloBtn = document.getElementById("helloBtn");
+
+        helloBtn.addEventListener("click", function(event) {
+            alert("Hello from addEventListener.");
+        }, false);
+
+        //Event binding using a convenience method
+        $( "#helloBtn" ).click(function( event ) {
+            alert( "Hello from regular jQuery convenience." );
+        });
+
+        //Attach an event handler directly to the button using jQuery's bind method passing it an event string of 'click'
+        $("#helloBtn2").bind("click", function (event) {
+            alert("Hello from jQuery's bind");
+        });
+
+        // As of jQuery 1.7, attach an event handler directly to the button
+        // using jQuery's `on` method.
+        $( "#helloBtn3" ).on( "click", function( event ) {
+            alert( "Hello from jQuery on method." );
+        });
+
+        // As of jQuery 1.7, attach an event handler to the `body` element that
+        // is listening for clicks, and will respond whenever *any* button is
+        // clicked on the page.
+        $( "body" ).on({
+            click: function( event ) {
+                alert( "Hello from body listener." );
+            }
+        }, "button" );
+
+        // An alternative to the previous example, using slightly different syntax.
+        $( "body" ).on( "click", "button", function( event ) {
+            alert( "Hello from the previous body example but with slightly different syntax." );
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>This is a test paragraph</p>
+<ul>
+    <li>LI 1</li>
+</ul>
+
+<script src="jquery.js"></script>
+<script>
+
+    //Passing data to the event handler
+    $("p").on("click", {
+        foo: "bar"
+    }, function(event) {
+        console.log("event data: " + event.data.foo + " (should be 'bar')");
+    });
+
+    //Binding events to elements that don't exist yet.
+    $("ul").on("click", "li", function() {
+        console.log( "Something in a <ul> was clicked, and we detected that it was an <li> element." );
+    })
+</script>
+
+</body>
+</html>

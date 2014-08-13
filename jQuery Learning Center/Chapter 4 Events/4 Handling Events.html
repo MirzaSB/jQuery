@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>This is a test</p>
+<div>Test Div</div>
+<script src="jquery.js"></script>
+<script>
+
+    //When any <p> tag is clicked, we expect to see '<p> was clicked' in the console.
+    $("p").on("click", function() {
+        console.log("<p> was clicked");
+    });
+
+    //When a user focuses on or changes any input element, we expect a console message bind to multiple events.
+    /*$("div").on("mouseenter mouseleave", function() {
+       console.log("mouse hovered over or left a div");
+    });*/
+    $("div").on({
+        mouseenter: function() {
+            console.log("hovered over a div");
+        },
+        mouseleave: function() {
+            console.log("mouse left a div");
+        },
+        click: function() {
+            console.log("clicked on a div");
+        }
+    });
+
+</script>
+
+</body>
+</html>

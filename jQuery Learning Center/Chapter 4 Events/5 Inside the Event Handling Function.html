@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a href="http://www.google.com">This is a sample 'a' element that leads to Google.com</a>
+<script src="jquery.js"></script>
+<script>
+
+    //Preventing a link from being followed
+    $("a").click(function(event) {
+        //Turn the DOM element into a jQuery object...
+        var elem = $(this);
+        if(elem.attr("href").match("google")) {
+            //Prevent the link access from going through.
+            event.preventDefault();
+            elem.addClass("google");
+        }
+    });
+</script>
+
+</body>
+</html>

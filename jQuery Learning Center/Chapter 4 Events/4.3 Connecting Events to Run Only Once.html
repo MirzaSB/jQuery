@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>This is a test paragraph</p>
+
+<script src="jquery.js"></script>
+<script>
+
+    //Switching handlers using the .one() method
+    $("p").one("click", function() {
+        console.log("You just clicked this for the first time!");
+        $(this).click(function() {
+            console.log("You have clicked this before!");
+        });
+    });
+
+</script>
+
+</body>
+</html>

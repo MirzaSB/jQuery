@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <div class="room" id="kitchen">
+        <div class="lightbulb on">test</div>
+        <div class="switch"></div>
+        <div class="switch"></div>
+        <div class="clapper"></div>
+    </div>
+
+    <div class="room" id="bedroom">
+        <div class="lightbulb on">test</div>
+        <div class="switch"></div>
+        <div class="switch"></div>
+        <div class="clapper"></div>
+    </div>
+
+    <script src="jquery.js"></script>
+
+    <script>
+
+        /*
+        $(".switch .clapper").click(function () {
+            var light = $(this).parent().find(".lightbulb");
+            if(light.hasClass("on")) {
+                light.removeClass("on").addClass("off");
+            }
+            else {
+                light.removeClass("off").addClass("on");
+            }
+        });
+        */
+
+        /*
+        $(".lightbulb").on("changedState", function(e) {
+            var light = $(this);
+            if(light.hasClass("on")) {
+                light.removeClass("on").addClass("off");
+            }
+            else {
+                light.removeClass("off").addClass("on");
+            }
+        });
+
+        $(".switch, .clapper").click(function() {
+            $(this).parent().find(".lightbulb").trigger("changedState");
+        });
+        */
+
+        $( ".lightbulb" ).on( "changeState", function( e ) {
+            var light = $( this );
+            if ( light.hasClass( "on" ) ) {
+                light.trigger( "turnOff" );
+            } else {
+                light.trigger( "turnOn" );
+            }
+        }).on( "turnOn", function( e ) {
+            $( this ).removeClass( "off" ).addClass( "on" );
+        }).on( "turnOff", function( e ) {
+            $( this ).removeClass( "on" ).addClass( "off" );
+        });
+
+        $( ".switch, .clapper" ).click(function() {
+            $( this ).parent().find( ".lightbulb" ).trigger( "changeState" );
+        });
+
+        $( "#master_switch" ).click(function() {
+            if ( $( ".lightbulb.on" ).length ) {
+                $( ".lightbulb" ).trigger( "turnOff" );
+            } else {
+                $( ".lightbulb" ).trigger( "turnOn" );
+            }
+        });
+
+    </script>
+
+</body>
+</html>

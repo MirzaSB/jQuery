@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>This is a test</p>
+
+<script src="jquery.js"></script>
+
+<script>
+
+    /*
+
+    var existingHook = jQuery.event.fixHooks.drop;
+
+    if ( !existingHook ) {
+        jQuery.event.fixHooks.drop = {
+            props: [ "dataTransfer" ]
+        };
+    } else {
+        if ( existingHook.props ) {
+            existingHook.props.push( "dataTransfer" );
+        } else {
+            existingHook.props = [ "dataTransfer" ];
+        }
+    }
+
+    var elem = $( "p" );
+
+    elem.on( "click", function( event ) {
+        $( "body" ).append( "I am a " + event.type + "!" );
+    });
+
+    elem.on( "pushy", function( event ) {
+        $( "body" ).append( "I am pushy but still a " + event.type + "!" );
+    });
+
+    elem.trigger( "click" ); // triggers both handlers
+
+    elem.off( "click" );
+
+    elem.trigger( "click" ); // still triggers "pushy"
+
+    elem.off( "pushy" );
+    */
+
+    jQuery.event.special.multiclick = {
+        delegateType: "click",
+        bindType: "click",
+        handle: function( event ) {
+            var handleObj = event.handleObj;
+            var targetData = jQuery.data( event.target );
+            var ret = null;
+
+            // If a multiple of the click count, run the handler
+            targetData.clicks = ( targetData.clicks || 0 ) + 1;
+
+            if ( targetData.clicks % event.data.clicks === 0 ) {
+                event.type = handleObj.origType;
+                ret = handleObj.handler.apply( this, arguments );
+                event.type = handleObj.type;
+                return ret;
+            }
+        }
+    };
+
+    // Sample usage
+    $( "p" ).on( "multiclick", {
+        clicks: 3
+    }, function( event ) {
+        alert( "clicked 3 times" );
+    });
+
+</script>
+
+</body>
+</html>
